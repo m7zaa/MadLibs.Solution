@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using MadLibs.Models;
 
@@ -10,20 +6,23 @@ namespace MadLibs.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        
+        [Route("/")]
+        public ActionResult Form() { return View(); }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+
+        [Route("/story")]
+        public ActionResult Story(string celebrity1, string celebrity2, string celebrity3, string noun1, string noun2, string verb)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            MadLibsVariable myMadLibsVariable = new MadLibsVariable();
+            myMadLibsVariable.Celebrity1 = celebrity1;
+            myMadLibsVariable.Celebrity2 = celebrity2;
+            myMadLibsVariable.Celebrity3 = celebrity3;
+            myMadLibsVariable.Verb1 = verb;
+            myMadLibsVariable.Noun1 = noun1;
+            myMadLibsVariable.Noun2 = noun2;
+            return View(myMadLibsVariable);
         }
     }
 }
