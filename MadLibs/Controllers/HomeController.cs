@@ -16,8 +16,8 @@ namespace MadLibs.Controllers
         public ActionResult Form() { return View(); }
 
 
-        [Route("/story")]
-        public ActionResult Story(string celebrity1, string celebrity2, string celebrity3, string noun1, string noun2, string verb)
+        [Route("/story-celebs")]
+        public ActionResult StorCelebs(string celebrity1, string celebrity2, string celebrity3, string noun1, string noun2, string verb)
         {
             MadLibsVariable myMadLibsVariable = new MadLibsVariable();
             myMadLibsVariable.Celebrity1 = celebrity1;
